@@ -25,9 +25,6 @@ function App() {
                 <Link to={LinkConfig.user_management.login}>Login</Link>
               </li>
               <li>
-                <Link to={LinkConfig.user_management.register}>register</Link>
-              </li>
-              <li>
                 <Link to={LinkConfig.url_item_management.url_item_list}>
                   UrlListPage
                 </Link>
@@ -56,13 +53,6 @@ function App() {
           component={LoginPage}
           role={"All"}
         />
-        <AuthorizedRoute
-          exact
-          path={LinkConfig.user_management.register}
-          component={LoginPage}
-          role={"All"}
-        />
-        <Route></Route>
       </Router>
     </AuthProvider>
   );
