@@ -1,0 +1,10 @@
+{
+  "about": "/about",
+  "url_item_management": {
+    "url_item_list": "/url-item-list",
+    "url_item_info": "/url-item-info"
+  },
+  "user_management": {
+    "login": "/login"
+  }
+}
