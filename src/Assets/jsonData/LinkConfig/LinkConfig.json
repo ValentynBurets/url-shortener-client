@@ -5,6 +5,7 @@
     "url_item_info": "/url-item-info"
   },
   "user_management": {
-    "login": "/login"
+    "login": "/login",
+    "register": "/register"
   }
 }
