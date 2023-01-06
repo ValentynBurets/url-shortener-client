@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import style from "./ShortenerUrl.module.sass";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Button from "react-bootstrap/Button";
 
 interface ShortenerUrlProps {
   setUrl: (arg: string) => void;
@@ -52,7 +53,7 @@ function ShortenerUrl(props: ShortenerUrlProps) {
     return <p className="noData">Loading...</p>
   }
   if(error) {
-    return <p className="noData">Something wne t wrong :(</p>
+    return <p className="noData">Something went wrong :(</p>
   }
 
   return (
@@ -66,7 +67,7 @@ function ShortenerUrl(props: ShortenerUrlProps) {
             value={value}
             onChange={e => {setValue(e.target.value); props.setUrl(e.target.value)}}  
           />
-          <button onClick={handleClick}>shorten</button>
+          <Button onClick={handleClick}>shorten</Button>
         </div>
       </div>
       {shortenLink && (

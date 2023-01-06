@@ -92,7 +92,7 @@ export default function LoginForm() {
       </div>
 
       <Form.Group className="mb-3" controlId="userEmail">
-        <Form.Label>{resources.AuthorizeBox.LoginTab.Labels.Email}</Form.Label>
+        <Form.Label>{resources.AuthorizeBox.LoginTab.Labels.LogIn}</Form.Label>
         <InputGroup>
           <Form.Control
             value={formState.email}

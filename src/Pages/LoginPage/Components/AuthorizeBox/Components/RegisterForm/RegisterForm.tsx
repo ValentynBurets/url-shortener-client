@@ -12,9 +12,6 @@ function RegisterForm() {
   const { login } = useAuth();
 
   const [formState, setFormState] = useState({
-    name: "",
-    surname: "",
-    phone: "",
     email: "",
     password: "",
     passwordVisible: false,
@@ -23,10 +20,6 @@ function RegisterForm() {
     authorizedMessage: "",
     errorMessage: "",
   });
-
-  const nameValidPattern = "[а-яА-ЯёЁіІїЇєЄa-zA-Z]{2,20}$";
-  const surnameValidPattern = "[а-яА-ЯёЁіІїЇєЄa-zA-Z]{2,20}$";
-  const phoneValidPattern = "^\\+380[0-9]{9}$";
   const passwordValidPattern =
     "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}:;<>,.?~_+-=|]).{10,25}$";
 
@@ -44,9 +37,6 @@ function RegisterForm() {
 
     if (isFormValid) {
       const userData = {
-        firstName: formState.name,
-        lastName: formState.surname,
-        phoneNumber: formState.phone,
         email: formState.email,
         password: formState.password,
       };
@@ -91,85 +81,9 @@ function RegisterForm() {
         {formState.errorMessage}
       </div>
 
-      <Form.Group className="mb-3" controlId="userName">
-        <Form.Label>
-          {resources.AuthorizeBox.RegisterTab.Labels.Name}
-        </Form.Label>
-        <InputGroup>
-          <Form.Control
-            value={formState.name}
-            onChange={(event) =>
-              setFormState((prev) => {
-                return { ...prev, name: event.target.value };
-              })
-            }
-            className="ig-form-control"
-            type="text"
-            placeholder={resources.AuthorizeBox.RegisterTab.Placeholders.Name}
-            pattern={nameValidPattern}
-            maxLength={20}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {resources.AuthorizeBox.RegisterTab.InvalidText.Name}
-          </Form.Control.Feedback>
-        </InputGroup>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="userSurname">
-        <Form.Label>
-          {resources.AuthorizeBox.RegisterTab.Labels.Surname}
-        </Form.Label>
-        <InputGroup>
-          <Form.Control
-            value={formState.surname}
-            onChange={(event) =>
-              setFormState((prev) => {
-                return { ...prev, surname: event.target.value };
-              })
-            }
-            className="ig-form-control"
-            type="text"
-            placeholder={
-              resources.AuthorizeBox.RegisterTab.Placeholders.Surname
-            }
-            pattern={surnameValidPattern}
-            maxLength={20}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {resources.AuthorizeBox.RegisterTab.InvalidText.Surname}
-          </Form.Control.Feedback>
-        </InputGroup>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="userPhone">
-        <Form.Label>
-          {resources.AuthorizeBox.RegisterTab.Labels.Phone}
-        </Form.Label>
-        <InputGroup>
-          <Form.Control
-            value={formState.phone}
-            onChange={(event) =>
-              setFormState((prev) => {
-                return { ...prev, phone: event.target.value };
-              })
-            }
-            className="ig-form-control"
-            type="text"
-            placeholder={resources.AuthorizeBox.RegisterTab.Placeholders.Phone}
-            pattern={phoneValidPattern}
-            maxLength={13}
-          />
-          <Form.Control.Feedback type="invalid">
-            {resources.AuthorizeBox.RegisterTab.InvalidText.Phone}
-          </Form.Control.Feedback>
-        </InputGroup>
-      </Form.Group>
-
       <Form.Group className="mb-3" controlId="userEmail">
         <Form.Label>
-          {resources.AuthorizeBox.RegisterTab.Labels.Email}
+          {resources.AuthorizeBox.RegisterTab.Labels.LogIn}
         </Form.Label>
         <InputGroup>
           <Form.Control

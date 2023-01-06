@@ -21,15 +21,11 @@ const AuthorizedRoute: FC<AuthorizedRouteProps> = ({
     <Route
       {...params}
       render={() =>
-        user.auth ? (
           user.role === role || role === "All" ? (
             reactComponent
           ) : (
             <BadRequest show={true} text={`Your role is not a ${role}`} />
           )
-        ) : (
-          <Redirect to="/" />
-        )
       }
     />
   );

@@ -9,13 +9,39 @@
     "Title" : "Log In",
     "Text" : ""
   },
+  "Info":{
+    "Identifier": {
+        "Title": "Identifier",
+        "Description": "url item identifier"
+    },
+    "Url": {
+        "Title": "url",
+        "Description": "full url text"    
+    },
+    "ShortUrl": {
+        "Title": "url",
+        "Description": "short url text"    
+    },
+    "CreatorLogin": {
+        "Title": "Creator",
+        "Description": "Creator login"    
+    },
+    "CreatorRole": {
+        "Title": "Creator Role",
+        "Description": "Creator role in this app"    
+    },
+    "CreatedDate": {
+        "Title": "Creted date",
+        "Description": "Creted date"    
+    }
+  },
   "AuthorizeBox": {
     "Title": "Please log in or register",
     "LoginTab": {
         "Title": "Log in",
         "ButtonText": "Log in",
         "Labels": {
-            "Email": "Email address",
+            "LogIn": "LogIn name",
             "Password": "Password",
             "ShowPasswordButton": "Show password"
         },
@@ -36,10 +62,7 @@
         "ButtonText": "Register",
         "SubmitButtonText": "Submit",
         "Labels": {
-            "Name": "Name",
-            "Surname": "Surname",
-            "Phone": "Phone number",
-            "Email": "Email address",
+            "LogIn": "LogIn name",
             "Password": "Password",
             "NewPassword": "New password",
             "CurrentPassword": "Current password",
