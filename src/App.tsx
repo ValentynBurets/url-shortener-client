@@ -9,6 +9,7 @@ import AuthorizedRoute from "./Components/RoleRoutes/AuthorizedRoute";
 
 import style from "./App.module.sass";
 import UrlItemInfoPage from "./Pages/UrlItemManagement/UrlItemInfoPage/UrlItemInfoPage";
+import AboutPage from "./Pages/AboutPage/AboutPaga";
 
 function App() {
   return (
@@ -66,6 +67,12 @@ function App() {
             exact
             path={LinkConfig.user_management.login}
             component={LoginPage}
+            role={"All"}
+          />
+          <AuthorizedRoute
+            exact
+            path={LinkConfig.about}
+            component={AboutPage}
             role={"All"}
           />
           <AuthorizedRoute

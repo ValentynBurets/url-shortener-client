@@ -6,6 +6,7 @@ import { ShortUrlItem } from "../Types/UrlItem";
 interface TbodyProps {
   bodyData: ShortUrlItem[];
   setAddNewUrl: (arg: boolean) => void;
+  setListUpdate: (arg:boolean) => void;
   isCustomer?: boolean;
   setGoodRequest: (arg: RequestResult) => void;
   setBadRequest: (arg: RequestResult) => void;
@@ -24,6 +25,9 @@ function Tbody(props: TbodyProps) {
             key={index}
             setAddNewUrl={props.setAddNewUrl}
             index={index}
+            setListUpdate={(arg: boolean) => {
+              props.setListUpdate(arg);
+            }}
           />
         ))}
     </tbody>

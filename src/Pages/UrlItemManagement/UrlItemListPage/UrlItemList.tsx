@@ -22,7 +22,7 @@ import { useAuth } from "../../../Components/AuthProvider/AuthProvider";
 
 function UrlItemListPage() {
   const { user } = useAuth();
-
+  const [listUpdate, setListUpdate] = useState<boolean>(false);
   const [addNewUrl, setAddNewUrl] = useState<boolean>(false);
   const [goodRequest, setGoodRequest] = useState<RequestResult>({
     show: false,
@@ -39,7 +39,8 @@ function UrlItemListPage() {
 
   useEffect(() => {
     GetAllUrlItemsService(setUrlItems);
-  }, [addNewUrl]);
+    setListUpdate(false);
+  }, [addNewUrl, listUpdate]);
 
   return (
     <div>
@@ -52,6 +53,9 @@ function UrlItemListPage() {
             bodyData={urlItems}
             setAddNewUrl={(arg: boolean) => {
               setAddNewUrl(arg);
+            }}
+            setListUpdate={(arg: boolean) => {
+              setListUpdate(arg);
             }}
           />
         </Table>
