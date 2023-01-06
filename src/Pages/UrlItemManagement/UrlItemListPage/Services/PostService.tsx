@@ -1,10 +1,12 @@
 import axios from "axios";
 import ConnectionConfig from "../../../../Assets/jsonData/ConnectionConfig/ConnectionConfig.json"
+import { RequestResult } from "../../../../Components/Types/RequestResult";
 import { CreateUrlItem } from "../../../../Components/Types/UrlItem";
 
 interface AddUrlItemServiceProps{
   urlItemData: CreateUrlItem,
-  setResult: (arg:string) => void
+  setGoodRequest: (arg:RequestResult) => void
+  setBadRequest: (arg:RequestResult) => void
 } 
 
 const AddUrlItemService = (props: AddUrlItemServiceProps) => {
@@ -26,13 +28,25 @@ const AddUrlItemService = (props: AddUrlItemServiceProps) => {
           }
         )
         .then((responce) => {
-          props.setResult(responce.data.message);
-          //console.log(responce.data.message);
+          if(responce.data.name === "AxiosError"){
+            props.setBadRequest({
+              show: true,
+              message: responce.data.message
+            })
+          }
+          else{
+            props.setGoodRequest({
+              show: true,
+              message: "Added new url to list with id:" + responce.data
+            })
+          }
+          console.log(responce.data);
         })
         .catch((e) => {
-          props.setResult(e.message);
-          console.log(e);
-          alert(e);
+          props.setBadRequest({
+            show: true,
+            message: e
+          })
         });
 }
 

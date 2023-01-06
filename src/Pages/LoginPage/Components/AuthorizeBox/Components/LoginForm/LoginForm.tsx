@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import AuthorizeService from "../../../../Services/AuthorizeService";
 import { useAuth } from "../../../../../../Components/AuthProvider/AuthProvider";
+import LinkConfig from "../../../../../../Assets/jsonData/LinkConfig/LinkConfig.json"
 
 export default function LoginForm() {
   const currentHistory = useHistory();
@@ -53,14 +54,11 @@ export default function LoginForm() {
           let receivedUser = login();
 
           switch (receivedUser.role) {
-            case "Customer":
-              currentHistory.push("/new_order");
-              break;
-            case "Employee":
-              currentHistory.push("/employee_order_page");
+            case "User":
+              currentHistory.push(LinkConfig.url_item_management.url_item_list);
               break;
             case "Admin":
-              currentHistory.push("/user_list");
+              currentHistory.push(LinkConfig.url_item_management.url_item_list);
               break;
           }
         } else {

@@ -1,15 +1,15 @@
 {
-  "ServerUrl": "https://localhost:44320/api/UrlItem/",
+  "ServerUrl": "https://localhost:44320/api/",
   "Routes": {
     "Login": "Authentication/Login",
     "Register": "Authentication/RegisterCustomer",
     "RegisterUser": "Authentication/RegisterUser",
     "RegisterAdmin": "Authentication/RegisterAdmin",
     "UrlItem": {
-      "Create": "Create",
-      "Delete": "Delete",
-      "GetById": "GetById",
-      "GetAll": "GetAll"
+      "Create": "UrlItem/Create",
+      "Delete": "UrlItem/Delete",
+      "GetById": "UrlItem/GetById",
+      "GetAll": "UrlItem/GetAll"
     }
   }
 }

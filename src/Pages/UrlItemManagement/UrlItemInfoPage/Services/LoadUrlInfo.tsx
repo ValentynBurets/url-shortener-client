@@ -18,7 +18,7 @@ const GetAllUrlItemsService = (props: LoadUrlInfoProps) => {
       `${
         ConnectionConfig.ServerUrl +
         ConnectionConfig.Routes.UrlItem.GetById +
-        "?Id=" +
+        "?urlItemId=" +
         props.id
       }`,
       {
@@ -26,6 +26,7 @@ const GetAllUrlItemsService = (props: LoadUrlInfoProps) => {
       }
     )
     .then((responce) => {
+      console.log(responce.data)
       props.setUrlItem(responce.data);
     })
     .catch((e) => {

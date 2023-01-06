@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import LinkConfig from "../../Assets/jsonData/LinkConfig/LinkConfig.json";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { RequestResult } from "../Types/RequestResult";
 import { ShortUrlItem } from "../Types/UrlItem";
 import TextData from "../../Assets/jsonData/TextData/en.json"
 import DeleteUrlItem from "./Services/DeleteUrlItem"
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 interface TableElementProps {
   index: number;
@@ -18,9 +19,13 @@ interface TableElementProps {
 }
 
 function TableElement(props: TableElementProps) {
-
+  const { user } = useAuth();
+  const currentHistory = useHistory();
+  
   return (
-    <tr className="align-middle text-center">
+    <tr className="align-middle text-center" onClick={ () =>
+      currentHistory.push(LinkConfig.url_item_management.url_item_info + `/${props.elementData.id}`)
+    }>
       <td>
         {props.elementData && props.elementData.id && (
           <Link
@@ -35,22 +40,7 @@ function TableElement(props: TableElementProps) {
       </td>
       <td>{props.elementData.url}</td>
       <td>{props.elementData.shortUrl}</td>
-      {!props.isCustomer ? (
-        <td>
-          <Button
-            onClick={() =>
-              props.setAddNewUrl(true)
-            }
-            variant="dark"
-          >
-            {TextData.AddNewUrl}
-          </Button>
-        </td>
-      ) : (
-        <div>
-        </div>
-      )}
-      {!props.isCustomer ? (
+      {user.role === "Admin" ? (
         <td>
           <Button
             onClick={() =>

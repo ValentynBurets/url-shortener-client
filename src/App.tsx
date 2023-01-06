@@ -19,9 +19,6 @@ function App() {
             <nav>
               <ul>
                 <li>
-                  <Link to="/home">Home</Link>
-                </li>
-                <li>
                   <Link to={LinkConfig.about}>About</Link>
                 </li>
                 <li>

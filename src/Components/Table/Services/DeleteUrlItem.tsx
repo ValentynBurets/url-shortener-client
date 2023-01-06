@@ -13,7 +13,7 @@ const DeleteUrlItemService = (Id: string) => {
         .delete(
           `${
             ConnectionConfig.ServerUrl + ConnectionConfig.Routes.UrlItem.Delete +
-            "?Id=" + Id
+            "?urlItemId=" + Id
           }`,
           {
             headers: { Authorization: `Bearer ${token}` },

@@ -28,6 +28,7 @@ function ShortenerUrl(props: ShortenerUrlProps) {
       setLoading(true);
       const res = await axios(`https://api.shrtco.de/v2/shorten?url=${inputValue}`);
       setShortenLink(res.data.result.full_short_link);
+      props.setShortUrl(res.data.result.full_short_link);
     } catch(err: any) {
       setError(err);
     } finally {

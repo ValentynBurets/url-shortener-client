@@ -22,13 +22,9 @@
         "Title": "url",
         "Description": "short url text"    
     },
-    "CreatorLogin": {
-        "Title": "Creator",
-        "Description": "Creator login"    
-    },
-    "CreatorRole": {
-        "Title": "Creator Role",
-        "Description": "Creator role in this app"    
+    "CreatorId": {
+        "Title": "Creator Id",
+        "Description": "Creator identidfier"    
     },
     "CreatedDate": {
         "Title": "Creted date",

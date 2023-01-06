@@ -13,7 +13,7 @@ export interface ShortUrlItem{
 
 export interface UrlItem{
   id: string;
-  creator: PersonInfo;
+  creatorId: string;
   url: string;
   shortUrl: string;
   createdDate: string;

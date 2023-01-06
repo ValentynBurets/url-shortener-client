@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Row, Modal, Button, Container, Table } from "react-bootstrap";
+import { Row, Modal, Button, Table } from "react-bootstrap";
 
 import GetAllUrlItemsService from "./Services/GetService";
 import AddUrlItemService from "./Services/PostService";
 
-import {
-  CreateUrlItem,
-  ShortUrlItem,
-  UrlItem,
-} from "../../../Components/Types/UrlItem";
+import { ShortUrlItem } from "../../../Components/Types/UrlItem";
 import TheaderList from "../../../Components/Table/TheaderList";
 import Tbody from "../../../Components/Table/Tbody";
-import { RequestResult } from "../../../Components/Types/RequestResult";
+import {
+  RequestResult,
+  RequestType,
+} from "../../../Components/Types/RequestResult";
 
 import TextData from "../../../Assets/jsonData/TextData/en.json";
 import ShortenerUrl from "../../../Components/ShortenerUrl/ShortenerUrl";
@@ -19,8 +18,11 @@ import ShortenerUrl from "../../../Components/ShortenerUrl/ShortenerUrl";
 import style from "./UrlItemList.module.sass";
 import GoodRequest from "../../../Components/Message/GoodRequest";
 import BadRequest from "../../../Components/Message/BadRequest";
+import { useAuth } from "../../../Components/AuthProvider/AuthProvider";
 
 function UrlItemListPage() {
+  const { user } = useAuth();
+
   const [addNewUrl, setAddNewUrl] = useState<boolean>(false);
   const [goodRequest, setGoodRequest] = useState<RequestResult>({
     show: false,
@@ -34,20 +36,13 @@ function UrlItemListPage() {
 
   const [url, setUrl] = useState<string>("");
   const [shortUrl, setShortUrl] = useState<string>("");
-  const [result, setResult] = useState<string>("");
 
   useEffect(() => {
     GetAllUrlItemsService(setUrlItems);
-  }, []);
-
-  useEffect(() => {
-    console.log(result)
-  }, [result])
+  }, [addNewUrl]);
 
   return (
     <div>
-      <BadRequest show={badRequest.show} text={badRequest.message} />
-      <GoodRequest show={goodRequest.show} text={goodRequest.message} />
       <Row className="justify-content-md-center mx-auto mt-3 ListOfElem">
         <Table responsive>
           <TheaderList />
@@ -61,6 +56,25 @@ function UrlItemListPage() {
           />
         </Table>
       </Row>
+      <Row className={style.modal_style}>
+        {user.role === "User" || user.role === "Admin" ? (
+          <td>
+            <Button
+              style={{ marginLeft: "80%" }}
+              onClick={() => setAddNewUrl(true)}
+              variant="dark"
+            >
+              {TextData.AddNewUrl}
+            </Button>
+          </td>
+        ) : (
+          <div></div>
+        )}
+      </Row>
+      
+        <BadRequest show={badRequest.show} text={badRequest.message} />
+        <GoodRequest show={goodRequest.show} text={goodRequest.message} />
+      
       <Row className={style.row_style}>
         <Modal className={style.modal_style} show={addNewUrl} tabIndex="-1">
           <Modal.Header>
@@ -78,7 +92,8 @@ function UrlItemListPage() {
               onClick={() =>
                 AddUrlItemService({
                   urlItemData: { url: url, shorturl: shortUrl },
-                  setResult: setResult,
+                  setGoodRequest: (arg: RequestResult) => setGoodRequest(arg),
+                  setBadRequest: (arg: RequestResult) => setBadRequest(arg),
                 })
               }
             >

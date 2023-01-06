@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import AuthorizeService from "../../../../Services/AuthorizeService";
 import { useAuth } from "../../../../../../Components/AuthProvider/AuthProvider";
+import LinkConfig from "../../../../../../Assets/jsonData/LinkConfig/LinkConfig.json"
 
 function RegisterForm() {
   const currentHistory = useHistory();
@@ -51,7 +52,7 @@ function RegisterForm() {
 
           login();
 
-          currentHistory.push("/new_order");
+          currentHistory.push(LinkConfig.url_item_management.url_item_list);
         } else {
           let error =
             resources.AuthorizeBox.RegisterTab.ErrorText.IncorrectData;
